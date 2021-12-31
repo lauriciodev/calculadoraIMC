@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <title>Document</title>
+</head>
+<style>
+
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    .container{
+        width: 100%;
+        max-width: 400px;
+        height: 500px;
+        background-color: rgb(49, 1, 94);
+        margin: 30px auto;
+        padding: 10px;
+        border-radius: 30px;
+
+    }
+
+    form{
+        width: 100%;
+        height: 250px;
+        background-color: rgb(48, 14, 87);
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .result__container{
+        width: 100%;
+        height: 200px;
+        background-color: blueviolet;
+    }
+
+    legend{
+        color: white;
+        font-size: 1.5rem;
+        font-weight: 900;
+    }
+
+
+    input{
+        width: 100%;
+        max-width: 150px;
+        height:30px;
+        outline: none;
+        font-size: 1.1rem;
+    }
+
+
+    
+button{
+    width: 100px;
+    height: 30px;
+    background-color: rgb(0, 9, 61);
+    color: white;
+    outline: none;
+    border: none;
+    transition: .5s;
+    
+}
+
+button:hover{
+    background-color: violet;
+}
+
+h1{
+    color: white;
+    text-align: center;
+    font-weight: 900;
+}
+
+#txt_result{
+    color: white;
+    font-weight: 900;
+    text-align: center;
+    font-size: 1.4rem;
+}
+</style>
+<body>
+
+    <div class="container">
+        <form>
+            <legend>calculadora IMC</legend>
+            <input type="text" placeholder="nome" id="nome">
+
+            <input type="text" placeholder="altura" id="altura">
+
+            <input type="text" placeholder="peso" id="peso">
+              
+            <div> 
+
+                <button id="btn" type="button">calcular</button>
+                <button id="lmp" type="button">limpar</button>
+            </div>
+         
+
+        </form>
+
+        <div class="result__container">
+            <h1>resultado</h1>
+            <p id="txt_result"></p>
+
+        </div>
+    </div>
+
+    <script>
+            var btn = document.querySelector("#btn");
+
+        
+            btn.addEventListener("click", function add(){
+
+           var nome = document.querySelector("#nome").value
+            var altura = document.querySelector("#altura").value
+            var peso = document.querySelector("#peso").value
+            var local = document.querySelector("#txt_result");
+
+            var rst = ( peso / (altura * altura)).toFixed(2);
+            var msg = "";
+
+            
+
+            if(rst <= 18){
+                msg = "abaixo do peso"
+            }else if(rst <= 25){
+                msg = "no peso ideal"
+            }else if(rst <= 31){
+                msg = "acima  do peso"
+            }else if( !nome.value ){
+                alert("preenvha todos os campos !")
+            } 
+
+
+           local.innerHTML = nome + " seu imc é " + rst + "<br> e você esta " + msg;
+
+
+
+           var limp = document.querySelector("#lmp");
+
+            limp.addEventListener("click", function(){
+                      nome.value = ""
+                      altura.value = ""
+                      peso.value = ""
+
+                                    
+                        local.innerHTML = ""
+            })
+
+
+
+          
+
+            })
+
+
+            
+
+           
+          
+
+    </script>
+    
+</body>
+</html>
